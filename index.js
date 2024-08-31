@@ -5,7 +5,8 @@ const { version } = require('./package.json');
 
 startServer(config);
 
-const banner = `${styleString(`
+const banner = `${styleString(
+  `
                                                                 ██╗   ██╗ █████╗ ███████╗████████╗
                                                                 ██║   ██║██╔══██╗██╔════╝╚══██╔══╝
                                                                 ██║   ██║███████║███████╗   ██║
@@ -19,7 +20,11 @@ const banner = `${styleString(`
 ███████╗ ╚████╔╝ ███████╗██║ ╚████║   ██║   ███████║    ██████╔╝███████╗██████╔╝╚██████╔╝╚██████╔╝
 ╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝    ╚═════╝ ╚══════╝╚═════╝  ╚═════╝  ╚═════╝
                                                                                           v${version}
-`, 'yellow')}`;
+`,
+  'yellow',
+)}`;
 
 console.log(banner);
-console.log(`${styleString(`Server started.`, 'white', true)} ${styleString('Press Ctrl+C to stop.\n', 'white', false, true)}`);
+console.log(
+  `${styleString(`Server started.`, 'white', true)} ${styleString('Press Ctrl+C to stop.\n', 'white', false, true)}`,
+);

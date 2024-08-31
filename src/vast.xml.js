@@ -29,9 +29,12 @@ function generateVastXml(config, queryParams) {
               <ClickTracking><![CDATA[${createTrackingUrl(config.EVENT_PARAMS.clickTracking)}]]></ClickTracking>
             </VideoClicks>
             <TrackingEvents>
-              ${Object.entries(config.EVENTS).map(([event, param]) =>
-                `<Tracking event="${event}"><![CDATA[${createTrackingUrl(param)}]]></Tracking>`
-              ).join('\n              ')}
+              ${Object.entries(config.EVENTS)
+                .map(
+                  ([event, param]) =>
+                    `<Tracking event="${event}"><![CDATA[${createTrackingUrl(param)}]]></Tracking>`,
+                )
+                .join('\n              ')}
             </TrackingEvents>
           </Linear>
         </Creative>

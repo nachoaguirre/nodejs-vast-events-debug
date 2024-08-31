@@ -4,7 +4,7 @@ const userConfig = {
   PORT: 8030,
   SHOW_TIMESTAMP: true,
 
-  URL_DEST: "https://github.com/nachoaguirre/nodejs-vast-events-debug", // URL to open when the user clicks on the ad
+  URL_DEST: 'https://github.com/nachoaguirre/nodejs-vast-events-debug', // URL to open when the user clicks on the ad
 
   // Ad media file
   MEDIA_FILE: {
@@ -23,34 +23,34 @@ const userConfig = {
   // Tracked events and their corresponding param to display in the debug
   // https://www.iab.com/wp-content/uploads/2016/04/VAST4.0_Updated_April_2016.pdf
   EVENTS: {
-    mute: "mute",
-    unmute: "unmute",
-    pause: "pause",
-    resume: "resume",
-    rewind: "rewind",
-    skip: "skip",
-    playerExpand: "playerExpand",
-    playerCollapse: "playerCollapse",
-    start: "start",
-    firstQuartile: "firstQuartile",
-    midpoint: "midpoint",
-    thirdQuartile: "thirdQuartile",
-    complete: "complete",
-    acceptInvitationLinear: "acceptInvitationLinear",
-    otherAdInteraction: "otherAdInteraction",
-    creativeView: "creativeView",
-    acceptInvitation: "acceptInvitation",
-    adExpand: "adExpand",
-    adCollapse: "adCollapse",
-    minimize: "minimize",
-    close: "close",
-  }
+    mute: 'mute',
+    unmute: 'unmute',
+    pause: 'pause',
+    resume: 'resume',
+    rewind: 'rewind',
+    skip: 'skip',
+    playerExpand: 'playerExpand',
+    playerCollapse: 'playerCollapse',
+    start: 'start',
+    firstQuartile: 'firstQuartile',
+    midpoint: 'midpoint',
+    thirdQuartile: 'thirdQuartile',
+    complete: 'complete',
+    acceptInvitationLinear: 'acceptInvitationLinear',
+    otherAdInteraction: 'otherAdInteraction',
+    creativeView: 'creativeView',
+    acceptInvitation: 'acceptInvitation',
+    adExpand: 'adExpand',
+    adCollapse: 'adCollapse',
+    minimize: 'minimize',
+    close: 'close',
+  },
 };
 
 /**
  * END OF USER CONFIGURATION
  * DO NOT EDIT BELOW THIS LINE
-*/
+ */
 
 function parseArgs(args) {
   const result = {};
@@ -69,16 +69,22 @@ const config = {
   ...userConfig,
   HOST: args.host || userConfig.HOST,
   PORT: parseInt(args.port) || userConfig.PORT,
-  SHOW_TIMESTAMP: args.showTimestamp !== undefined ? (args.showTimestamp === 'true') : userConfig.SHOW_TIMESTAMP,
+  SHOW_TIMESTAMP:
+    args.showTimestamp !== undefined
+      ? args.showTimestamp === 'true'
+      : userConfig.SHOW_TIMESTAMP,
   URL_DEST: args.urlDest || userConfig.URL_DEST,
   MEDIA_FILE: {
     ...userConfig.MEDIA_FILE,
     get url() {
-      return userConfig.MEDIA_FILE.url || `http://${config.HOST}:${config.PORT}/public/videoad.mp4`;
-    }
+      return (
+        userConfig.MEDIA_FILE.url ||
+        `http://${config.HOST}:${config.PORT}/public/videoad.mp4`
+      );
+    },
   },
   EVENT_PARAMS: userConfig.EVENT_PARAMS,
-  EVENTS: userConfig.EVENTS
+  EVENTS: userConfig.EVENTS,
 };
 
 module.exports = config;
