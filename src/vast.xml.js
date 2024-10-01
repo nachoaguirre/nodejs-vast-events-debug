@@ -6,9 +6,16 @@ function generateVastXml(config, queryParams) {
     if (queryString) {
       return `${baseUrl}/${event}?${queryString}`;
     } else {
-      return `${baseUrl}/?${event}`;
+      return `${baseUrl}/${event}`;
     }
   }
+
+  const progressTrackingEvents = Object.entries(config.EVENTS_PROGRESS)
+    .map(
+      ([eventName, offset]) =>
+        `<Tracking event="progress" offset="${offset}"><![CDATA[${createTrackingUrl(eventName)}]]></Tracking>`
+    )
+    .join('\n              ');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <VAST version="4.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iab.com/VAST">
@@ -29,6 +36,7 @@ function generateVastXml(config, queryParams) {
               <ClickTracking><![CDATA[${createTrackingUrl(config.EVENT_PARAMS.clickTracking)}]]></ClickTracking>
             </VideoClicks>
             <TrackingEvents>
+              ${progressTrackingEvents}
               ${Object.entries(config.EVENTS)
                 .map(
                   ([event, param]) =>

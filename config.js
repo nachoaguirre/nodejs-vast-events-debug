@@ -45,6 +45,13 @@ const userConfig = {
     minimize: 'minimize',
     close: 'close',
   },
+
+  // Track ad progress in HH:MM:SS format
+  EVENTS_PROGRESS: {
+    progress5: '00:00:05',
+    progress10: '00:00:10',
+    //progress13: '00:00:13',
+  },
 };
 
 /**
@@ -85,6 +92,7 @@ const config = {
   },
   EVENT_PARAMS: userConfig.EVENT_PARAMS,
   EVENTS: userConfig.EVENTS,
+  EVENTS_PROGRESS: userConfig.EVENTS_PROGRESS,
 };
 
 module.exports = config;
